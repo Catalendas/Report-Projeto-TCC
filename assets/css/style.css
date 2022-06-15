@@ -69,7 +69,7 @@ a{
 
 #principal {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     background-color: gainsboro;
 }
@@ -84,6 +84,8 @@ a{
    
 
    max-width: 280px;
+
+   position: relative;
    
 }
 
@@ -126,6 +128,8 @@ a{
     flex-grow: 1; 
 
     max-width: 280px;
+
+    position: relative;
 }
 
 #friends{
@@ -188,45 +192,18 @@ a{
 /* Centro */
 
 .post{
+
+    height: 100vh;
     flex-grow: 2;
     display: flex;
     align-items: center;
     flex-direction: column;
-}
 
-#postage{
-    height: 100px;
-    width: 600px;
-    margin-top: 40px;
+    position: relative;
 
-    background-color: gray;
+    overflow: hidden;
 
-    border-radius: 20px;
-
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-}
-
-#element-postage {
-    width: 450px;
-    height: 70px;
-
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-}
-
-
-#text-postage{
-    margin-top: 10px;
-
-    border: none;
-    background-color: rgb(196, 196, 196);
-
-    border-radius: 10px;
+    overflow-y: scroll;
 }
 
 #image-file{
@@ -251,21 +228,24 @@ input[type="file"]{
     align-items: center;
     justify-content: center;
     transition: background .4s;
+
+    margin-bottom: 10px;
 }
 
 .iconContainer:hover{
     background-color: gray;
 }
 
-#postage button{
-    width: 100px;
-    height: 25px;
+.reportar{
+    width: 773px;
+    height: 50px;
 
-    margin-bottom: 5px;
-
+    top: 610px;
     border: none;
 
-    background-color: #ccc;
+    position: fixed;
+
+    background-color: rgb(255, 61, 61);
 
     font-weight: bolder;
 
@@ -274,16 +254,26 @@ input[type="file"]{
 
 .user-post{
 
-    height: 500px;
+    height: 460px;
     width: 600px;
     margin-top: 40px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: white;
+    border-radius: 20px;
 
     
 
 }
 
+/* Identificador de postagem */
+
 .identifier {
     
+    margin-top: 20px;
+    margin-left: 20px;
 
     display: flex;
     align-items: center;
@@ -310,6 +300,9 @@ input[type="file"]{
 
 .user-text{
     margin-top: 10px;
+    margin-top: 20px;
+    margin-left: 20px;
+    
     width: 510px;
 
     font-weight: 500;
@@ -318,6 +311,9 @@ input[type="file"]{
 }
 
 .user-photo{
+    margin-top: 20px;
+    margin-left: 20px;
+
     display: flex;
     align-items: center;
 
@@ -339,7 +335,8 @@ input[type="file"]{
     width: 500px;
     height: 50px;
 
-    margin-top: 10px;
+    margin-top: 8px;
+    margin-left: 20px;
 
     display: flex;
     align-items: flex-start;
@@ -358,3 +355,85 @@ input[type="file"]{
     cursor: pointer;
 }
 
+/* Modal */
+
+.modal-container {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 2000;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-container.mostrar{
+    display: flex;
+}
+
+.modal{
+    background: white;
+    width: 60%;
+    max-width: 300px;
+    padding: 40px;
+    border: 10px solid #aaa8a8;
+    box-shadow: 0 0 0 10px white;
+    position: relative;
+}
+
+@keyframes modal {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -60px 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0px 0);
+    }
+}
+
+.mostrar .modal {
+    animation: modal .3s;
+}
+
+.fechar-modal {
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+    border: 4px solid white;
+
+    background: #aaa8a8;
+    color: white;
+    
+    cursor: pointer;
+
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+.text-postage {
+    background: rgb(224, 224, 224);
+    border: none;
+    border-radius: 2px;
+    margin-bottom: 10px;
+}
+
+.modal input[type="text"] {
+    height: 20px;
+}
+
+.btn-reportar{
+    background-color: rgb(255, 61, 61);
+    height: 30px;
+    width: 80px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
